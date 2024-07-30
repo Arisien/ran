@@ -1,0 +1,7 @@
+# Environment
+.vscode/
+.todo
+
+# Compile
+*.o
+*.out
