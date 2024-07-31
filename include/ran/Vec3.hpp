@@ -12,6 +12,7 @@ public:
         float y;
         float z;
     };
+    Vec3 (float f);
     Vec3 (const Vec3 &vec);
     Vec3 (float x, float y, float z);
     

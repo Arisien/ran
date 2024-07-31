@@ -5,6 +5,12 @@
 
 namespace ran {
 
+Vec3::Vec3 (float f) {
+    __m128 xmm = _mm_set1_ps(f);
+    _mm_store_ps(dim, xmm);
+    dim[3] = 0.f;
+}
+
 Vec3::Vec3 (const Vec3 &vec) {
     for (int i = 0; i < 4; i++) {
         dim[i] = vec.dim[i];
@@ -13,7 +19,7 @@ Vec3::Vec3 (const Vec3 &vec) {
 
 Vec3::Vec3 (float x, float y, float z)
     : x(x), y(y), z(z) {
-    dim[3] = 0.;
+    dim[3] = 0.f;
 }
 
 void Vec3::add (const Vec3 &vec) __restrict {
@@ -89,7 +95,7 @@ float Vec3::magnitude () const {
     // Horizontal add
     xmm = _mm_hadd_ps(xmm, xmm);
     xmm = _mm_hadd_ps(xmm, xmm);
-    // Inverse square root
+    // Square root
     xmm = _mm_sqrt_ps(xmm);
     return _mm_cvtss_f32(xmm);
 }
