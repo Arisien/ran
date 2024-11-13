@@ -18,3 +18,14 @@ void test () {
     }
 }
 ```
+
+## Integer Operations
+
+Ran supports some common x86 operations that are not provided by C's operators such as rotation (ROR, ROL).
+
+```cpp
+uint32_t test (uint32_t x) {
+    x = ran::ror<8>(x);
+    return x + 5;
+}
+```
